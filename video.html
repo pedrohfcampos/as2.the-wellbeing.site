@@ -86,8 +86,8 @@
     <div class="timer">
         Time left: <span class="time" id="time">0:15</span>
     </div>
-    <a href="https://www.youtube.com/" class="btn">Proceed</a>
-
+    <a href="https://wr.thewell-being.online/loyew7ir78/" class="btn" id="proceedButton">Proceed</a>
+    
     <footer id="footer">
         <div class="footer-link">
             <a href="https://page1.thegoodhealht.online/privacy-policy/">Privacy Policy</a> |
@@ -115,6 +115,30 @@
         setTimeout(() => {
             document.getElementById('footer'). style.display = 'block';
         }, 1800000); // Delay footer visibility for 30 minutes
+
+        document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var proceedButton = document.getElementById('proceedButton');
+        if (!proceedButton) {
+            console.error('O botão não foi encontrado no documento.');
+            return;
+        }
+
+        if (urlParams.toString() === "") {
+            console.error('Nenhum parâmetro foi passado para a página.');
+            // Aqui você pode optar por redirecionar para uma página de erro ou exibir uma mensagem
+            return;
+        }
+
+        var baseUrl = proceedButton.href;
+        baseUrl += baseUrl.includes('?') ? '&' : '?';
+        urlParams.forEach(function(value, key) {
+            baseUrl += encodeURIComponent(key) + '=' + encodeURIComponent(value) + '&';
+        });
+        baseUrl = baseUrl.slice(0, -1);
+        proceedButton.href = baseUrl;
+        console.log("URL final do botão:", proceedButton.href);
+    });
     </script>
 </body>
 </html>
